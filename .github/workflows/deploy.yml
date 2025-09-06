@@ -1,0 +1,25 @@
+on:
+  push:
+    branches:
+      - main
+      - production
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+            
+      - name: install npm  
+        run:  |
+           npm install
+           npm start
+           npm test     
